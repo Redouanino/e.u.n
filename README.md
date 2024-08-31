@@ -22,3 +22,4 @@ To see a step-by-step guide on how to build this project, check out our [YouTube
 - [daisy ui] https://daisyui.com/components/
 - [react-icons] https://react-icons.github.io/react-icons/
 - [uuid] https://github.com/uuidjs/uuid
+"# EverythingU-llNeed" 
