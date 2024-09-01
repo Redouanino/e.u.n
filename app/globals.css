@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Default light theme */
+html[data-theme='light'] {
+    --navbar-bg: #ffffff; /* Hintergrundfarbe für Light Mode */
+    --navbar-text: #000000; /* Textfarbe für Light Mode */
+    --bg-color: #ffffff;
+    --text-color: #000000;
+}
+
+/* Dark theme */
+html[data-theme='dark'] {
+    --navbar-bg: #1a202c; /* Hintergrundfarbe für Dark Mode */
+    --navbar-text: #ffffff; /* Textfarbe für Dark Mode */
+    --bg-color: #2a303c;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Navbar styles */
+nav {
+    background-color: var(--navbar-bg);
+    color: var(--navbar-text);
+}
