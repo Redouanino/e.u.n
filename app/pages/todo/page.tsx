@@ -1,14 +1,13 @@
 // app/page.js (oder .tsx)
 import { getAllTodos } from "@/api";
-import AddTask from "../../components/AddTask";
-import TodoList from "../../components/TodoList";
+import AddTask from "../../components/Todo/AddTask";
+import TodoList from "../../components/Todo/TodoList";
 import '../../globals.css';
-import dynamic from 'next/dynamic';
-import Navbar from "@/app/components/Navbar";
+import Navbar from "@/app/components/Ui/Navbar";
 import React from 'react';
 
 // Dynamisch importieren der ThemeToggle-Komponente mit { ssr: false }
-const ThemeToggle = dynamic(() => import('../../components/ThemeToggle'), { ssr: false });
+
 
 export default async function Home() {
     const tasks = await getAllTodos();

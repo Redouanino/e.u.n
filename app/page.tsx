@@ -1,11 +1,14 @@
 import './globals.css'
-import Navbar from "@/app/components/Navbar";
+import Navbar from "@/app/components/Ui/Navbar";
 
 export default function Home() {
     return (
-        <>
-        <Navbar />
-        </>
+        <div>
+            <Navbar />
+            <main>
+                <h1>Willkommen auf der Startseite</h1>
+            </main>
+        </div>
     );
 }
 

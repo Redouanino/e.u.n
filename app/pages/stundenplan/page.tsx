@@ -1,21 +1,24 @@
-// app/page.js (oder .tsx)
-import '../../globals.css';
-import Navbar from "@/app/components/Navbar";
-import React from 'react';
+// app/stundenplan/page.tsx
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
+const Stundenplan = () => {
+    const [fach, setFach] = useState<string | null>(null);
+    const router = useRouter();
 
-export default async function Home() {
+    const handleSelection = (selectedFach: string) => {
+        setFach(selectedFach);
+        router.push(`/stundenplan/${selectedFach}`);
+    };
 
     return (
-        <div className='min-h-full'>
-            <Navbar/>
-            <main className='max-w-4xl mx-auto px-4 py-8'>
-                <div className='text-center flex flex-col gap-4'>
-                    <h1 className='text-2xl font-bold mt-32'>Stundenplaner</h1>
-                </div>
-            </main>
+        <div>
+            <h1>Wählen Sie Ihren Bereich</h1>
+            <button onClick={() => handleSelection('wirtschaft')}>Wirtschaft</button>
+            <button onClick={() => handleSelection('mechatronik')}>Mechatronik</button>
         </div>
-
-
     );
-}
+};
+
+export default Stundenplan;
