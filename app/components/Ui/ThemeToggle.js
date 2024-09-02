@@ -21,8 +21,8 @@ const ThemeToggle = () => {
     };
 
     return (
-        <button onClick={toggleTheme} className="btn btn-primary">
-            {theme === 'light' ? <MdDarkMode size={30} /> : <MdLightMode size={30} />}
+        <button onClick={toggleTheme} className={`btn ${ theme === 'dark' && "btn-primary"}`}>
+            {theme === 'light' ? <MdDarkMode className={"text-primary"} size={30} /> : <MdLightMode size={30} />}
         </button>
     );
 };

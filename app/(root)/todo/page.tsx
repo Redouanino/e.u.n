@@ -2,7 +2,7 @@
 import { getAllTodos } from "@/api";
 import AddTask from "../../components/Todo/AddTask";
 import TodoList from "../../components/Todo/TodoList";
-import '../../globals.css';
+import '../../../styles/globals.css';
 import Navbar from "@/app/components/Ui/Navbar";
 import React from 'react';
 

@@ -1,15 +1,13 @@
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
-import './globals.css';
+import '../styles/globals.css';
 import Navbar from "@/app/components/Ui/Navbar";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <ClerkProvider>
             <html lang="en">
-            <body className="flex flex-col min-h-screen">
-            <header className="fixed top-0 w-full z-10">
-                <Navbar />
-            </header>
+            <body className="flex flex-col min-h-screen bg-base-100">
+            <Navbar />
             <div className="pt-32 flex-grow">
                 <SignedOut>
                     <SignInButton />
