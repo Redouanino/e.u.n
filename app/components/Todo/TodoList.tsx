@@ -1,13 +1,21 @@
-import { ITask } from "@/types/tasks";
-import React from "react";
+"use client";
+
+
+import React, {useEffect} from "react";
 import Task from "./Task";
+import {Todo} from "@prisma/client";
+
+
 
 interface TodoListProps {
-  tasks: ITask[];
+todos: Todo[] | null;
+
 }
 
-const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
-  return (
+
+const TodoList: React.FC<TodoListProps> = ({ todos }) => {
+
+    return (
       <div className='overflow-x-auto'>
         <table className='table w-full z-0'>
           {/* head */}
@@ -18,7 +26,7 @@ const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
           </tr>
           </thead>
           <tbody>
-          {tasks.map((task) => (
+          {todos && todos.map((task) => (
               <Task key={task.id} task={task} />
           ))}
           </tbody>

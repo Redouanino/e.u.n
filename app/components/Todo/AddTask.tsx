@@ -2,22 +2,41 @@
 
 import { AiOutlinePlus } from "react-icons/ai";
 import Modal from "./Modal";
-import { FormEventHandler, useState } from "react";
-import { addTodo } from "@/api";
+import React, { FormEventHandler, useState } from "react";
 import { useRouter } from "next/navigation";
-import { v4 as uuidv4 } from "uuid";
 
-const AddTask = () => {
+interface AddTaskProps {
+    handleRefetch: () => void;
+
+}
+
+
+const AddTask: React.FC<AddTaskProps> = ({ handleRefetch }) =>{
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [newTaskValue, setNewTaskValue] = useState<string>("");
 
+
+
   const handleSubmitNewTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    await addTodo({
-      id: uuidv4(),
-      text: newTaskValue,
-    });
+    console.log("Adding new task");
+
+    try {
+      await fetch('/api/todos/todo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({text: newTaskValue})
+      })
+      handleRefetch();
+
+        console.log("todo added")
+    }catch (error) {
+      console.error('Error fetching all todos')
+    }
+
     setNewTaskValue("");
     setModalOpen(false);
     router.refresh();
