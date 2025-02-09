@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineInstagram, AiOutlineTwitter, AiOutlineGithub } from "react-icons/ai";
 import ThemeToggle from './ThemeToggle';
 import '../../../styles/globals.css';
-import EUNLight from '../../../public/images/EUN-light.png';
-import EUNDark from '../../../public/images/EUN-dark.png';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
