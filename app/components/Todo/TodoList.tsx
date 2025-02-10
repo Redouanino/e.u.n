@@ -10,10 +10,12 @@ import {Todo} from "@prisma/client";
 interface TodoListProps {
 todos: Todo[] | null;
 
+handleRefetch: () => void;
+
 }
 
 
-const TodoList: React.FC<TodoListProps> = ({ todos }) => {
+const TodoList: React.FC<TodoListProps> = ({ todos, handleRefetch}) => {
 
     return (
       <div className='overflow-x-auto'>
@@ -26,8 +28,8 @@ const TodoList: React.FC<TodoListProps> = ({ todos }) => {
           </tr>
           </thead>
           <tbody>
-          {todos && todos.map((task) => (
-              <Task key={task.id} task={task} />
+          {todos && todos.map((task, index) => (
+              <Task key={task.id} className={index %2 == 1 ? '!bg-black-20':''} task={task} handleRefetch={handleRefetch} />
           ))}
           </tbody>
         </table>

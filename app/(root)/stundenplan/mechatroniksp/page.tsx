@@ -1,60 +1,32 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../../../../styles/globals.css';
+import {cn} from "@/libs/utils";
+import StundenplanTabelle from "@/app/(root)/stundenplan/components/stundenplanTabelle";
 
-export default function Stundenplan() {
+export default function StundenplanMechatronik() {
+    // Stundenplan-Daten: Erstes Array-Element = Uhrzeiten, danach folgen Wochentage
+    const stundenplan = [
+        ['Zeit', '8:00 - 8:45', '8:45 - 9:30', '9:45 - 10:30', '10:30 - 11:15', '11:30 - 12:15', '12:15 - 13:00', '13:30 - 14:15', '14:15 - 15:00', '15:00 - 15:45'],
+        ['Montag', 'Chemie', 'Chemie', 'Physik', 'Physik', 'Deutsch', 'Deutsch', 'Tutor', '', ''],
+        ['Dienstag', 'Spani./Franz.', 'Spani./Franz.', 'Englisch', 'Englisch', 'Geschichte', 'Geschichte', 'Deutsch', 'Deutsch', ''],
+        ['Mittwoch', 'Mathe', 'Mathe', 'Powi', 'Powi', 'Sport', 'Sport', 'METR', 'METR', ''],
+        ['Donnerstag', 'MTTS', 'MTTS', 'MTTS', 'MTTS', 'Englisch', 'Englisch', 'Spani./Franz.', 'Spani./Franz.', ''],
+        ['Freitag', 'Ethik/Reli', 'Ethik/Reli', 'Mathe', 'Mathe', 'METR', 'METR', 'TEKO', 'TEKO', '']
+    ];
+
+    // Transpose the stundenplan array
+    const transposedStundenplan = stundenplan[0].map((_, colIndex) => stundenplan.map(row => row[colIndex]));
+
     return (
-        <div className='min-h-full'>
-            <main className='max-w-4xl mx-auto px-4 py-8'>
+        <div className='min-h-full flex flex-col items-center'>
+            <main className='max-w-5xl mx-auto px-4 py-8'>
                 <div className='text-center flex flex-col gap-4'>
-                    <h1 className='text-2xl font-bold mt-32'>Stundenplan</h1>
-                    <table className='w-full border-collapse border border-gray-800'>
-                        <thead>
-                        <tr className='bg-gray-800'>
-                            <th className='border border-gray-800 px-4 py-2'>Zeit</th>
-                            <th className='border border-gray-800 px-4 py-2'>Montag</th>
-                            <th className='border border-gray-800 px-4 py-2'>Dienstag</th>
-                            <th className='border border-gray-800 px-4 py-2'>Mittwoch</th>
-                            <th className='border border-gray-800 px-4 py-2'>Donnerstag</th>
-                            <th className='border border-gray-800 px-4 py-2'>Freitag</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td className='border border-gray-800 px-4 py-2'>08:00-09:30</td>
-                            <td className='border border-gray-800 px-4 py-2'>Chemie</td>
-                            <td className='border border-gray-800 px-4 py-2'>Spani./Franz.</td>
-                            <td className='border border-gray-800 px-4 py-2'>Mathe</td>
-                            <td className='border border-gray-800 px-4 py-2'>Mechatronik</td>
-                            <td className='border border-gray-800 px-4 py-2'>Ethik/Reli</td>
-                        </tr>
-                        <tr>
-                            <td className='border border-gray-800 px-4 py-2'>09:00-11:15</td>
-                            <td className='border border-gray-800 px-4 py-2'>Physik</td>
-                            <td className='border border-gray-800 px-4 py-2'>Englisch</td>
-                            <td className='border border-gray-800 px-4 py-2'>Powi</td>
-                            <td className='border border-gray-800 px-4 py-2'>Mechatronik</td>
-                            <td className='border border-gray-800 px-4 py-2'>Mathe</td>
-                        </tr>
-                        <tr>
-                            <td className='border border-gray-800 px-4 py-2'>11:30-13:00</td>
-                            <td className='border border-gray-800 px-4 py-2'>Deutsch</td>
-                            <td className='border border-gray-800 px-4 py-2'>Geschichte</td>
-                            <td className='border border-gray-800 px-4 py-2'>Sport</td>
-                            <td className='border border-gray-800 px-4 py-2'>Englisch</td>
-                            <td className='border border-gray-800 px-4 py-2'>Mechatronik</td>
-                        </tr>
-                        <tr>
-                            <td className='border border-gray-800 px-4 py-2'>13:30-15:00</td>
-                            <td className='border border-gray-800 px-4 py-2'>Tutor</td>
-                            <td className='border border-gray-800 px-4 py-2'>Deutsch</td>
-                            <td className='border border-gray-800 px-4 py-2'>Mechatronik</td>
-                            <td className='border border-gray-800 px-4 py-2'>Spani./Franz.</td>
-                            <td className='border border-gray-800 px-4 py-2'>TEKO</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <h1 className='text-2xl font-bold mt-32'>
+                        Stundenplan <span className='text-red-400'>Mechatronik</span>
+                    </h1>
+                    <StundenplanTabelle stundenplan={transposedStundenplan}/>
                 </div>
             </main>
         </div>

@@ -41,7 +41,7 @@ export default function Home() {
                 <div className='text-center flex flex-col gap-4'>
                     <h1 className='text-2xl font-bold mt-32'>Todo Liste</h1>
                     <AddTask handleRefetch={handleRefetch}/>
-                    <TodoList todos={tasks}/>
+                    <TodoList todos={tasks} handleRefetch={handleRefetch}/>
                 </div>
             </main>
         </div>
